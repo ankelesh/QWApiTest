@@ -11,12 +11,17 @@ class Requester:
         }
     }
     json_header = ('Content-Type', 'application/json')
-    baseUrl = "https://api.stg.qwallet.md/"
+    baseUrl = "https://api.stg.qwallet.md"
 
     def make_signature(self, data):
         signature = OpenSSL.crypto.sign(self.privatekey, data, 'sha256')
         signature = base64.b64encode(signature)
         return signature
+
+    def debug_out(self, req, body):
+        print("sending request to " + req.full_url)
+        print("headers: " + str(req.headers))
+        print('body: ' + body.decode('utf-8'))
 
     def __init__(self,public_key, private_key, checksignature="", paysignature="", statussignature="", context=None ):
         f = open(public_key)
@@ -46,7 +51,7 @@ class Requester:
         current_req = Request(self.checkUrl, headers=self.context['headers'])
         current_req.add_header(*self.json_header)
         current_req.add_header('X-SIGNATURE', self.make_signature(b_data))
-        print("requesting with headers: " + str(current_req.headers) + "\nand body: " + b_data.decode('utf-8'))
+        self.debug_out(current_req, b_data)
         result = urlopen(current_req, b_data)
         return result
 
@@ -58,6 +63,7 @@ class Requester:
         current_req = Request(self.payUrl, headers=self.context['headers'])
         current_req.add_header(*self.json_header)
         current_req.add_header('X-SIGNATURE', self.make_signature(b_data))
+        self.debug_out(current_req, b_data)
         result = urlopen(current_req, b_data)
         return result
 

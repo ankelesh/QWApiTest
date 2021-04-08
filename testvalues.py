@@ -6,8 +6,8 @@ CONTEXT = {
 }
 }
 
-WALLET_ID =  "+3736911111"
-AMOUNT = "1"
+WALLET_ID =  "3736911111"
+AMOUNT = "10"
 CCY = "498"
 ITEM_LIST = [
     {
@@ -27,7 +27,7 @@ ID_DATA = {
     "walletId": WALLET_ID,
     "invoiceId": "11223344556677889900",
     "customerId": "info@una.md",
-    "when": time.time() * 1000,
+    "when": int(time.time() * 1000),
     "clientIp": "123.123.123.123"
 }
 

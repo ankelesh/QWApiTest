@@ -1,13 +1,13 @@
 import time
-
+from random import randint
 CONTEXT = {
     'headers' : {
     "X-MERCHANT": "alias1"
 }
 }
 
-WALLET_ID =  "3736911111"
-AMOUNT = "10"
+WALLET_ID =  "37369111111"
+AMOUNT = 10
 CCY = "498"
 ITEM_LIST = [
     {
@@ -25,7 +25,7 @@ RECEIPT_DATA = {
 }
 ID_DATA = {
     "walletId": WALLET_ID,
-    "invoiceId": "11223344556677889900",
+    "invoiceId": "1122334455667788" + str(randint(1000, 9999)),
     "customerId": "info@una.md",
     "when": int(time.time() * 1000),
     "clientIp": "123.123.123.123"

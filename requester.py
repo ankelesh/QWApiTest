@@ -53,7 +53,7 @@ class Requester:
         current_req.add_header('X-SIGNATURE', self.make_signature(b_data))
         self.debug_out(current_req, b_data)
         result = urlopen(current_req, b_data)
-        return result
+        return result.read()
 
     def pay(self, idlist, receipt, items):
         req_body = idlist.copy()
@@ -65,9 +65,10 @@ class Requester:
         current_req.add_header('X-SIGNATURE', self.make_signature(b_data))
         self.debug_out(current_req, b_data)
         result = urlopen(current_req, b_data)
-        return result
+        return result.read()
 
     def status(self, operationid):
         current_req = Request(self.statusUrl + operationid, headers=self.context['headers'])
+        print('requesting: ' + current_req.full_url)
         result = urlopen(current_req)
-        return result
+        return result.read()

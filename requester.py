@@ -69,6 +69,8 @@ class Requester:
 
     def status(self, operationid):
         current_req = Request(self.statusUrl + operationid, headers=self.context['headers'])
-        print('requesting: ' + current_req.full_url)
+        current_req.add_header('X-SIGNATURE', self.make_signature(operationid.encode('utf-8')))
+        print('requesting: ' + current_req.full_url + "\nheaders: " + str(current_req.headers))
+
         result = urlopen(current_req)
         return result.read()

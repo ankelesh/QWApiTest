@@ -7,7 +7,7 @@ CONTEXT = {
 }
 
 WALLET_ID =  "37369111111"
-AMOUNT = 10
+AMOUNT = 9
 CCY = "498"
 ITEM_LIST = [
     {
@@ -18,15 +18,15 @@ ITEM_LIST = [
 ]
 RECEIPT_DATA = {
     "ccy": "498",
-    "price": 110.23,
-    "discount": 15.89,
-    "amount": 94.34,
-    "tax": 11.02
+    "price": 12,
+    "discount": 1,
+    "amount": 9,
+    "tax": 1
 }
 ID_DATA = {
     "walletId": WALLET_ID,
     "invoiceId": "1122334455667788" + str(randint(1000, 9999)),
-    "customerId": "info@una.md",
+    "customerId": str(randint(100000, 999999)),
     "when": int(time.time() * 1000),
     "clientIp": "123.123.123.123"
 }

@@ -12,6 +12,7 @@ try:
     print(res)
     oid = decoded['operationId']
     print('-' * 80)
+    input("press enter after payment confirm")
     print(m_rec.status(oid))
     print('-' * 37 + 'SUCCESS' + '-' * 36)
 except error.HTTPError as e:

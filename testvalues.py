@@ -34,3 +34,4 @@ ID_DATA = {
 CHECK_URL = '/merchant/checkout/check'
 PAY_URL = '/merchant/checkout/pay'
 STATUS_URL = '/merchant/checkout/status/'
+CANCEL_URL = '/merchant/checkout/cancel'
